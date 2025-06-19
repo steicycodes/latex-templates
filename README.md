@@ -114,6 +114,7 @@ This is a recommended set of files to include in `.gitignore` to not commit ugly
 *.cb2
 .*.lb
 *.bbl
+*.bbl-SAVE-ERROR
 *.bcf
 *.blg
 *.fdb_latexmk
