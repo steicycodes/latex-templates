@@ -25,15 +25,17 @@
 
 % Serif option:
 % Libertine for serif text font
-% \usepackage{libertine}
+\usepackage{libertine}
 % Source Code Pro for monospace font
-% \usepackage[scale=0.88]{plex-mono}
-% \renewcommand{\ttdefault}{\plexmonofamily}
+\usepackage[scale=0.88]{plex-mono}
+\renewcommand{\ttdefault}{\plexmonofamily}
 
 % Sans-serif option:
-\usepackage[sfdefault]{roboto}
-\usepackage[scale=0.95]{plex-mono}
-\renewcommand{\ttdefault}{\plexmonofamily}
+% Roboto for serif text font
+% \usepackage[sfdefault]{roboto}
+% Source Code Pro for monospace font
+% \usepackage[scale=0.95]{plex-mono}
+% \renewcommand{\ttdefault}{\plexmonofamily}
 
 % Small adjustments to text kerning
 \usepackage{microtype}
@@ -49,7 +51,36 @@
 \setbeamercolor{alerted text}{fg = accent2}
 
 % Frame title
-\setbeamercolor{frametitle}{bg = white, fg = zinc900}
+% Option 1: center and gray background
+\setbeamercolor{frametitle}{fg=zinc900,bg=zinc50}
+\makeatletter
+\setbeamertemplate{frametitle}{
+    \ifbeamercolorempty[bg]{frametitle}{}{\nointerlineskip}%
+    \@tempdima=\textwidth%
+    \advance\@tempdima by\beamer@leftmargin%
+    \advance\@tempdima by\beamer@rightmargin%
+
+    \begin{beamercolorbox}[sep=0.3cm,center,wd=\the\@tempdima]{frametitle}
+        \usebeamerfont{frametitle}%
+        \vbox{}\vskip-1.75ex%
+        \if@tempswa\else\csname beamer@ftecenter\endcsname\fi%
+        \strut\insertframetitle\strut\par%
+        {%
+            \ifx\insertframesubtitle\@empty%
+            \else%
+            {\usebeamerfont{framesubtitle}\usebeamercolor[fg]{framesubtitle}\insertframesubtitle\strut\par}%
+            \fi
+        }%
+        \vskip-0.5ex%
+        \if@tempswa\else\vskip-.3cm\fi% set inside beamercolorbox... evil here...
+    \end{beamercolorbox}%
+}
+\makeatother
+
+% Option 2: white background
+% \setbeamercolor{frametitle}{bg = white, fg = zinc900}
+
+% Frame subtitle
 \setbeamercolor{framesubtitle}{bg = white, fg = accent}
 \setbeamerfont{framesubtitle}{size = \small, shape = \itshape}
 
@@ -137,11 +168,24 @@
 \setbeamerfont{section in toc shaded}{size = \large}
 \setbeamercolor{section in toc}{fg = zinc800}
 \setbeamertemplate{section in toc shaded}[default][60] % opacity
+\setbeamercolor{subsection in toc}{fg = zinc800}
+\setbeamertemplate{subsection in toc shaded}[default][60] % opacity
+
 \AtBeginSection[]{
   {
     \hypersetup{hidelinks}
-    \begin{frame}[noframenumbering,plain]{\ }
-      \tableofcontents[currentsection]
+    \setbeamercolor{frametitle}{bg=white}
+    \begin{frame}[noframenumbering,plain,c]{}
+      \tableofcontents[currentsection,currentsubsection]
+    \end{frame}
+  }
+}
+\AtBeginSubsection[]{
+  {
+    \hypersetup{hidelinks}
+    \setbeamercolor{frametitle}{bg=white}
+    \begin{frame}[noframenumbering,plain,c]{}
+      \tableofcontents[currentsection,currentsubsection]
     \end{frame}
   }
 }
@@ -150,31 +194,29 @@
 
 %% Fix left-margins
 \settowidth{\leftmargini}{\usebeamertemplate{itemize item}}
-\addtolength{\leftmargini}{\labelsep}
+\settowidth{\leftmarginii}{\usebeamertemplate{itemize subitem}}
+\addtolength{\leftmargini}{1.5\labelsep}
+\addtolength{\leftmarginii}{0.5\labelsep}
 
-%% enumerate item color
-\setbeamercolor{enumerate item}{fg = zinc600}
-\setbeamerfont{enumerate item}{size = \small}
+%% Item markers
 \setbeamertemplate{enumerate item}{\insertenumlabel.}
+\setbeamertemplate{itemize item}{$\rightarrow$}
+\setbeamertemplate{itemize subitem}[square]
+\setbeamertemplate{itemize subsubitem}[square]
 
-%% enumerate subitems and subsubitems
+%% Marker colors
+\setbeamercolor{enumerate item}{fg = zinc600}
 \setbeamercolor{enumerate subitem}{fg = zinc600}
 \setbeamercolor{enumerate subsubitem}{fg = zinc600}
-
-%% itemize item
 \setbeamercolor{itemize item}{fg = zinc600}
-\setbeamerfont{itemize item}{size = \small}
-\setbeamertemplate{itemize item}[circle]
-
-%% right arrow for subitems
 \setbeamercolor{itemize subitem}{fg = zinc600}
-\setbeamerfont{itemize subitem}{size = \small}
-\setbeamertemplate{itemize subitem}{$\rightarrow$}
-
-%% square for subsubitems
 \setbeamercolor{itemize subsubitem}{fg = zinc600}
+
+%% Marker size
+\setbeamerfont{enumerate item}{size = \small}
+\setbeamerfont{itemize item}{size = \small}
+\setbeamerfont{itemize subitem}{size = \small}
 \setbeamerfont{itemize subsubitem}{size = \small}
-\setbeamertemplate{itemize subsubitem}[square]
 
 % References -------------------------------------------------------------------
 
@@ -322,7 +364,7 @@
 
 % Load tcolorbox and tikz ------------------------------------------------------
 \usepackage[beamer,customcolors]{hf-tikz}
-\usetikzlibrary{calc, fit, shapes.misc, shadows, arrows.meta}
+\usetikzlibrary{calc, fit, shadows, arrows, arrows.meta, shapes.misc, shapes,decorations, decorations.pathreplacing, positioning}
 \usepackage[most,skins]{tcolorbox}
 \tcbuselibrary{breakable}
 \tcbset{
@@ -465,7 +507,10 @@
 \newcolumntype{R}{>{\raggedleft\arraybackslash}X}
 \newcolumntype{C}{>{\centering\arraybackslash}X}
 
-% Table notes with \note{...} or \note[Source:]{...} command
+% Table notes with:
+% - \note{...},
+% - \note[Source:]{...}, or
+% - \note[]{0.7\textwidth}{...}
 \RenewDocumentCommand{\note}{O{Notes.} m g}{%
   \IfNoValueTF{#3}{%
     \footnotesize\vspace*{\medskipamount}%
