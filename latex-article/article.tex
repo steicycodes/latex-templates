@@ -2,17 +2,17 @@
 \usepackage{paper,math}
 \addbibresource{references.bib}
 
-\title{Test\thanks{\acknlowledgements}}
+\title{Test\thanks{\acknowledgements}}
 \author{
   Author One\\ {\itshape\large Affiliation}
   \and 
   Author Two\\ {\itshape\large Affiliation}
 }
 \date{\today}
-\def\acknlowledgements{%
+\def\acknowledgements{%
   One: \href{mailto:email@gmail.com}{email@gmail.com}. 
   Two: \href{mailto:email@gmail.com}{email@gmail.com}. 
-  Acknlowedgements start here
+  Acknowledgements start here
 }
 \hypersetup{
   pdftitle = {Example Paper Title},
@@ -44,8 +44,8 @@
 % ------------------------------------------------------------------------------
 
 Hi and welcome to my default paper template. I tried to make the theme minimal and beautiful while able to do all the things that I want it to do. These include making it easy to make figures/tables with notes; have powerful math commands; have nice readable typography; make co-authoring in a document easy; have a nice looking bibliography; and make appendices easy. 
-I'll show off these things, but make sure to check the source code alongside to see how simple it is to typset with this. 
-\kyle{I'm including this comment for coauthors. If I switch above to \texttt{togglefalse}, this will dissapear.}
+I'll show off these things, but make sure to check the source code alongside to see how simple it is to typeset with this. 
+\kyle{I'm including this comment for coauthors. If I switch above to \texttt{togglefalse}, this will disappear.}
 
 See below for \autoref{thm:residue_thm}, the regression specification (\ref{eq:fe_reg}), \autoref{tab:summ_stat}, \autoref{fig:event_timing}, appendix \autoref{tab:reg1}. Of course, make sure to touch up on your micro theory with \citet{mas1995microeconomic}. I also provide a set of colors: \navy{Navy}, \teal{Teal}, \purple{Purple}, \cranberry{Cranberry}, \orange{Orange}.
 
@@ -101,7 +101,7 @@ $$\max[i]{x_i} \quad \sup[i]{x_i} \quad \limsup[n \to \infty]{x_i}$$
 \subsection{Tables}
 % ------------------------------------------------------------------------------
 
-For tables, I use the \texttt{tabular} and \texttt{booktabs} packages. For table and figure notes, I use a custom \texttt{\textbackslash note} command. It uses \texttt{\textbackslash parbox} under the hood. You can use it in one of of four ways:
+For tables, I use the \texttt{tabular} and \texttt{booktabs} packages. For table and figure notes, I use a custom \texttt{\textbackslash note} command. It uses \texttt{\textbackslash parbox} under the hood. You can use it in one of four ways:
 \begin{enumerate}
   \item \texttt{\textbackslash note\{text\}}
   \item \texttt{\textbackslash note[Notes.]\{text\}}
