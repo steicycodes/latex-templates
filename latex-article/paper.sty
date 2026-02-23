@@ -332,21 +332,13 @@
 %
 % Source: https://social-science-data-editors.github.io/guidance/citations/guidance_data_citations_biblatex.pdf
 % Source: https://github.com/dmsul/biblatex-aer/blob/master/biblatex-aer.tex
-\usepackage[
-  style = chicago-authordate,
-  doi = true,
-  backend = biber,
-  backref = true, % Prints back references e.g (cit. pp. 1)
-  backrefstyle = none, % How to sequence page numbers in back references
-  hyperref = true, % Enables hyperref
-  indexing = true,
-  natbib = true
-]{biblatex}
+
 \usepackage[
   authordate,
   backend = biber,
   uniquename = false,
-  noibid
+  noibid, 
+  natbib = true
 ]{biblatex-chicago}
 
 % Reduced spacing in bibliography
