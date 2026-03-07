@@ -2,21 +2,15 @@
 \usepackage{paper,math}
 \addbibresource{references.bib}
 
-\title{Test\thanks{\acknowledgements}}
+\title{The Effect of the Educational Voucher System Policy in Arkansas}
 \author{
-  Author One\\ {\itshape\large Affiliation}
-  \and 
-  Author Two\\ {\itshape\large Affiliation}
+  Steicy Lopez\\ {\itshape\large University of Chicago}
 }
 \date{\today}
-\def\acknowledgements{%
-  One: \href{mailto:email@gmail.com}{email@gmail.com}. 
-  Two: \href{mailto:email@gmail.com}{email@gmail.com}. 
-  Acknowledgements start here
-}
+
 \hypersetup{
-  pdftitle = {Example Paper Title},
-  pdfauthor = {Author One, Author Two},
+  pdftitle = {The Effect of the Educational Voucher System Policy in Arkansas},
+  pdfauthor = {Steicy Lopez},
 }
 
 % Conditionally display thoughts (hide by switching to `\boolfalse`)
@@ -28,19 +22,15 @@
 % Title Page -------------------------------------------------------------------
 \maketitle
 \begin{abstract}
+  
   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
-  \par~\par\noindent
-  {\color{zinc700}Keywords:} ...
-  \par\noindent
-  {\color{zinc700}JEL-Classification:} ...
-  \par\vspace{-2.5mm}
 \end{abstract}
 \newpage
 
 % Paper ------------------------------------------------------------------------
 % ------------------------------------------------------------------------------
-\section{Introduction}
+\section{Background}
 % ------------------------------------------------------------------------------
 
 Hi and welcome to my default paper template. I tried to make the theme minimal and beautiful while able to do all the things that I want it to do. These include making it easy to make figures/tables with notes; have powerful math commands; have nice readable typography; make co-authoring in a document easy; have a nice looking bibliography; and make appendices easy. 
@@ -50,11 +40,11 @@ I'll show off these things, but make sure to check the source code alongside to 
 See below for \autoref{thm:residue_thm}, the regression specification (\ref{eq:fe_reg}), \autoref{tab:summ_stat}, \autoref{fig:event_timing}, appendix \autoref{tab:reg1}. Of course, make sure to touch up on your micro theory with \citet{mas1995microeconomic}. I also provide a set of colors: \navy{Navy}, \teal{Teal}, \purple{Purple}, \cranberry{Cranberry}, \orange{Orange}.
 
 % ------------------------------------------------------------------------------
-\section{Highlights}
+\section{Empirical Framework}
 % ------------------------------------------------------------------------------
 
 % ------------------------------------------------------------------------------
-\subsection{Math Commands}
+\subsection{Results}
 % ------------------------------------------------------------------------------
 
 Theorem environments look nice. There are the following environments and their numbering resets automatically for appendices: \texttt{theorem}, \texttt{proposition}, \texttt{assumption}, \texttt{example}, \texttt{lemma}, \texttt{corollary}, \texttt{definition}, \texttt{remark}
@@ -98,7 +88,7 @@ $$\max[i]{x_i} \quad \sup[i]{x_i} \quad \limsup[n \to \infty]{x_i}$$
 
 
 % ------------------------------------------------------------------------------
-\subsection{Tables}
+\subsection{Interpretation}
 % ------------------------------------------------------------------------------
 
 For tables, I use the \texttt{tabular} and \texttt{booktabs} packages. For table and figure notes, I use a custom \texttt{\textbackslash note} command. It uses \texttt{\textbackslash parbox} under the hood. You can use it in one of four ways:
@@ -218,6 +208,11 @@ Results are presented in \autoref{tab:reg1}. In this table example, the table is
     \note[]{0.68\textwidth}{$^{*}$ $p < 0.1$; $^{**}$ $p < 0.05$; $^{***}$ $p < 0.01$.}
   \end{center}
 \end{table}
+
+
+% ------------------------------------------------------------------------------
+\subsection{Conclusion}
+% ------------------------------------------------------------------------------
 
 
 \end{document}
